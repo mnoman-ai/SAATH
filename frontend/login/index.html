@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Registration & Login</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #eaf4ff;
+        }
+
+        .container {
+            width: 350px;
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+            text-align: center;
+        }
+
+        h2 {
+            color: #2563eb;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            margin: 8px 0;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            margin-top: 15px;
+            border: none;
+            border-radius: 8px;
+            background: #2563eb;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #1d4ed8;
+        }
+
+        p {
+            color: #555;
+        }
+
+        span {
+            color: #2563eb;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <!-- Registration -->
+        <div id="registerBox">
+
+            <h2>Registration</h2>
+
+            <input type="text" id="regName" placeholder="Enter Name">
+
+            <input type="email" id="regEmail" placeholder="Enter Email">
+
+            <input type="password" id="regPassword" placeholder="Enter Password">
+
+            <button onclick="register()">Register</button>
+
+            <p>
+                Already have an account?
+                <span onclick="showLogin()">Login</span>
+            </p>
+
+        </div>
+
+
+        <!-- Login -->
+        <div id="loginBox" class="hidden">
+
+            <h2>Login</h2>
+
+            <input type="email" id="loginEmail" placeholder="Enter Email">
+
+            <input type="password" id="loginPassword" placeholder="Enter Password">
+
+            <button onclick="login()">Login</button>
+
+            <p>
+                Don't have an account?
+                <span onclick="showRegister()">Register</span>
+            </p>
+
+        </div>
+
+
+        <!-- Welcome Page -->
+        <div id="welcomeBox" class="hidden">
+
+            <h2>Welcome!</h2>
+
+            <p id="welcomeMessage"></p>
+
+            <button onclick="logout()">Logout</button>
+
+        </div>
+
+    </div>
+
+
+    <script>
+
+        // Registration
+        function register() {
+
+            let name = document.getElementById("regName").value;
+            let email = document.getElementById("regEmail").value;
+            let password = document.getElementById("regPassword").value;
+
+            if (name === "" || email === "" || password === "") {
+                alert("Please fill all fields");
+                return;
+            }
+
+            // Save user data
+            localStorage.setItem("name", name);
+            localStorage.setItem("email", email);
+            localStorage.setItem("password", password);
+
+            alert("Registration Successful!");
+
+            showLogin();
+        }
+
+
+        // Login
+        function login() {
+
+            let email = document.getElementById("loginEmail").value;
+            let password = document.getElementById("loginPassword").value;
+
+            let savedEmail = localStorage.getItem("email");
+            let savedPassword = localStorage.getItem("password");
+            let savedName = localStorage.getItem("name");
+
+            if (email === savedEmail && password === savedPassword) {
+
+                document.getElementById("loginBox")
+                    .classList.add("hidden");
+
+                document.getElementById("welcomeBox")
+                    .classList.remove("hidden");
+
+                document.getElementById("welcomeMessage").innerHTML =
+                    "Hello " + savedName +
+                    "!<br>You are successfully logged in.";
+
+            } 
+            else {
+
+                alert("Wrong Email or Password!");
+
+            }
+        }
+
+
+        // Show Login
+        function showLogin() {
+
+            document.getElementById("registerBox")
+                .classList.add("hidden");
+
+            document.getElementById("loginBox")
+                .classList.remove("hidden");
+        }
+
+
+        // Show Registration
+        function showRegister() {
+
+            document.getElementById("loginBox")
+                .classList.add("hidden");
+
+            document.getElementById("registerBox")
+                .classList.remove("hidden");
+        }
+
+
+        // Logout
+        function logout() {
+
+            document.getElementById("welcomeBox")
+                .classList.add("hidden");
+
+            document.getElementById("loginBox")
+                .classList.remove("hidden");
+
+            document.getElementById("loginEmail").value = "";
+            document.getElementById("loginPassword").value = "";
+        }
+
+    </script>
+
+</body>
+</html>
