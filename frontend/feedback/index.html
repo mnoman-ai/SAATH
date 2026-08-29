@@ -1,1 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>SAATH - Feedback</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background: #eaf4ff;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            padding: 20px;
+        }
+
+        .feedback-container {
+            width: 100%;
+            max-width: 500px;
+
+            background: white;
+
+            padding: 35px;
+
+            border-radius: 15px;
+
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+
+            text-align: center;
+        }
+
+        .logo {
+            font-size: 32px;
+            font-weight: bold;
+            color: #2563eb;
+
+            margin-bottom: 8px;
+        }
+
+        h2 {
+            margin-bottom: 10px;
+            color: #222;
+        }
+
+        .description {
+            color: #666;
+            margin-bottom: 25px;
+        }
+
+        .rating-title {
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .stars {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+
+            margin-bottom: 25px;
+        }
+
+        .star {
+            font-size: 35px;
+            color: #ccc;
+
+            cursor: pointer;
+
+            transition: 0.2s;
+        }
+
+        .star:hover {
+            transform: scale(1.1);
+        }
+
+        .star.active {
+            color: #f5b301;
+        }
+
+        textarea {
+            width: 100%;
+            height: 130px;
+
+            padding: 12px;
+
+            border: 1px solid #ccc;
+            border-radius: 8px;
+
+            resize: none;
+
+            font-size: 15px;
+
+            outline: none;
+        }
+
+        textarea:focus {
+            border-color: #2563eb;
+        }
+
+        button {
+            width: 100%;
+
+            padding: 12px;
+
+            margin-top: 18px;
+
+            border: none;
+            border-radius: 8px;
+
+            background: #2563eb;
+            color: white;
+
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #1d4ed8;
+        }
+
+        #message {
+            margin-top: 15px;
+            font-weight: bold;
+        }
+
+        .success {
+            color: green;
+        }
+
+        .error {
+            color: red;
+        }
+
+        @media (max-width: 500px) {
+
+            .feedback-container {
+                padding: 25px;
+            }
+
+            .star {
+                font-size: 30px;
+            }
+        }
+    </style>
+</head>
+
+
+<body>
+
+    <div class="feedback-container">
+
+        <div class="logo">
+            SAATH
+        </div>
+
+        <h2>Share Your Feedback</h2>
+
+        <p class="description">
+            Help us improve your SAATH experience.
+        </p>
+
+
+        <p class="rating-title">
+            How would you rate your experience?
+        </p>
+
+
+        <div class="stars">
+
+            <span class="star" data-rating="1">★</span>
+            <span class="star" data-rating="2">★</span>
+            <span class="star" data-rating="3">★</span>
+            <span class="star" data-rating="4">★</span>
+            <span class="star" data-rating="5">★</span>
+
+        </div>
+
+
+        <textarea
+            id="feedback"
+            placeholder="Write your feedback here...">
+        </textarea>
+
+
+        <button onclick="submitFeedback()">
+            Submit Feedback
+        </button>
+
+
+        <p id="message"></p>
+
+    </div>
+
+
+    <script>
+
+        let selectedRating = 0;
+
+
+        // Select all stars
+        const stars = document.querySelectorAll(".star");
+
+
+        // Add click event to every star
+        stars.forEach(function(star) {
+
+            star.addEventListener("click", function() {
+
+                selectedRating = this.dataset.rating;
+
+                updateStars();
+
+            });
+
+        });
+
+
+        // Update star appearance
+        function updateStars() {
+
+            stars.forEach(function(star) {
+
+                if (star.dataset.rating <= selectedRating) {
+
+                    star.classList.add("active");
+
+                } else {
+
+                    star.classList.remove("active");
+
+                }
+
+            });
+
+        }
+
+
+        // Submit feedback
+        function submitFeedback() {
+
+            const feedback =
+                document.getElementById("feedback").value.trim();
+
+            const message =
+                document.getElementById("message");
+
+
+            // Check rating
+            if (selectedRating == 0) {
+
+                message.textContent =
+                    "Please select a rating.";
+
+                message.className = "error";
+
+                return;
+            }
+
+
+            // Check feedback
+            if (feedback === "") {
+
+                message.textContent =
+                    "Please write your feedback.";
+
+                message.className = "error";
+
+                return;
+            }
+
+
+            // Success message
+            message.textContent =
+                "Thank you! Your feedback has been submitted.";
+
+            message.className = "success";
+
+
+            // Clear form
+            document.getElementById("feedback").value = "";
+
+            selectedRating = 0;
+
+            updateStars();
+
+        }
+
+    </script>
+
+</body>
+
+</html>
