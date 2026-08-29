@@ -281,21 +281,37 @@
             }
 
 
-            // Success message
-            message.textContent =
-                "Thank you! Your feedback has been submitted.";
+fetch("/api/feedback", {
+    method: "POST",
+    headers: {
+        "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+        rating: selectedRating,
+        comment: feedback
+    })
+})
+.then(function(response) {
+    return response.json();
+})
+.then(function(data) {
 
-            message.className = "success";
+    message.textContent = data.message;
+    message.className = "success";
 
+    document.getElementById("feedback").value = "";
 
-            // Clear form
-            document.getElementById("feedback").value = "";
+    selectedRating = 0;
+    updateStars();
 
-            selectedRating = 0;
+})
+.catch(function() {
 
-            updateStars();
+    message.textContent = "Unable to submit feedback.";
+    message.className = "error";
 
-        }
+});
+}
 
     </script>
 

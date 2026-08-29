@@ -1,0 +1,16 @@
+{
+  "feedback": [
+    {
+      "id": 1,
+      "rating": 5,
+      "comment": "Excellent",
+      "createdAt": "2026-08-29T12:09:52.689Z"
+    },
+    {
+      "id": 2,
+      "rating": 3,
+      "comment": "Good.",
+      "createdAt": "2026-08-29T14:21:26.682Z"
+    }
+  ]
+}
