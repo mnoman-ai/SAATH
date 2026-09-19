@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>SAATH</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f5f6f8;
+            min-height: 100vh;
+            color: #222;
+        }
+
+        header {
+            height: 70px;
+            background: #ffffff;
+            border-bottom: 1px solid #e5e5e5;
+
+            display: flex;
+            align-items: center;
+
+            padding: 0 35px;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .page {
+            min-height: calc(100vh - 70px);
+
+            display: flex;
+            align-items: flex-start;
+
+            padding: 45px 35px;
+        }
+
+        .menu {
+            width: 260px;
+
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .menu-button {
+            width: 100%;
+            padding: 18px 22px;
+
+            background: #ffffff;
+            border: 1px solid #e1e1e1;
+            border-radius: 10px;
+
+            color: #222;
+            text-decoration: none;
+            font-size: 17px;
+            font-weight: 600;
+
+            transition: 0.2s;
+        }
+
+        .menu-button:hover {
+            background: #f0f1f3;
+            transform: translateX(4px);
+        }
+
+        .empty-area {
+            flex: 1;
+        }
+
+        @media (max-width: 600px) {
+            header {
+                padding: 0 20px;
+            }
+
+            .page {
+                padding: 30px 20px;
+            }
+
+            .menu {
+                width: 220px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="logo">SAATH</div>
+    </header>
+
+    <main class="page">
+
+        <div class="menu">
+
+            <a href="/request/" class="menu-button">
+                Request
+            </a>
+
+            <a href="/feedback/" class="menu-button">
+                Feedback
+            </a>
+
+        </div>
+
+        <div class="empty-area"></div>
+
+    </main>
+
+</body>
+</html>
