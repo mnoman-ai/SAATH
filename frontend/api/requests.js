@@ -1,8 +1,10 @@
-import { put, list } from "@vercel/blob";
+import { put, get } from "@vercel/blob";
 
 export default async function handler(req, res) {
     if (req.method !== "POST") {
-        return res.status(405).json({ message: "Method not allowed" });
+        return res.status(405).json({
+            message: "Method not allowed"
+        });
     }
 
     const { item, category, quantity, reason } = req.body;
@@ -15,20 +17,18 @@ export default async function handler(req, res) {
 
     const options = {
         access: "private",
-        storeId: process.env.BLOB_READ_WRITE_TOKEN_STORE_ID,
         token: process.env.BLOB_READ_WRITE_TOKEN_READ_WRITE_TOKEN
     };
 
-    const files = await list({
-        prefix: "requests.json",
-        ...options
-    });
+    const blob = await get("requests.json", options);
 
-    let data = { requests: [] };
+    let data = {
+        requests: []
+    };
 
-    if (files.blobs.length > 0) {
-        const response = await fetch(files.blobs[0].url);
-        data = await response.json();
+    if (blob) {
+        const text = await new Response(blob.stream).text();
+        data = JSON.parse(text);
     }
 
     data.requests.push({
@@ -46,6 +46,7 @@ export default async function handler(req, res) {
         {
             ...options,
             addRandomSuffix: false,
+            allowOverwrite: true,
             contentType: "application/json"
         }
     );
