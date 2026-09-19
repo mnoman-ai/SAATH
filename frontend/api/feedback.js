@@ -13,7 +13,16 @@ export default async function handler(req, res) {
         });
     }
 
-    const files = await list({ prefix: "feedback.json" });
+    const options = {
+        access: "private",
+        storeId: process.env.BLOB_READ_WRITE_TOKEN_STORE_ID,
+        token: process.env.BLOB_READ_WRITE_TOKEN_READ_WRITE_TOKEN
+    };
+
+    const files = await list({
+        prefix: "feedback.json",
+        ...options
+    });
 
     let data = { feedback: [] };
 
@@ -33,7 +42,7 @@ export default async function handler(req, res) {
         "feedback.json",
         JSON.stringify(data, null, 2),
         {
-            access: "private",
+            ...options,
             addRandomSuffix: false,
             contentType: "application/json"
         }
