@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SAATH - Feedback</title>
+    <title>SAATH - Request</title>
 
     <style>
         * {
@@ -38,13 +38,16 @@
             font-weight: bold;
         }
 
-        h2 {
+        h2,
+        p {
             text-align: center;
+        }
+
+        h2 {
             color: #222;
         }
 
         p {
-            text-align: center;
             color: #666;
         }
 
@@ -54,6 +57,7 @@
             font-weight: bold;
         }
 
+        input,
         select,
         textarea,
         button {
@@ -63,13 +67,14 @@
             font-size: 15px;
         }
 
+        input,
         select,
         textarea {
             border: 1px solid #ccc;
         }
 
         textarea {
-            height: 110px;
+            height: 100px;
             resize: none;
         }
 
@@ -93,25 +98,6 @@
         .error {
             color: red;
         }
-
-.stars {
-    text-align: center;
-    margin: 10px 0 20px;
-}
-
-.stars span {
-    font-size: 35px;
-    color: #2563eb;
-    cursor: pointer;
-    margin: 3px;
-}
-
-
-
-
-
-
-
     </style>
 </head>
 
@@ -121,32 +107,35 @@
 
         <div class="logo">SAATH</div>
 
-        <h2>Share Your Feedback</h2>
+        <h2>Request an Item</h2>
 
-        <p>Tell us about your experience.</p>
+        <p>Tell us what you need and why.</p>
 
-        <form id="feedbackForm">
+        <form id="requestForm">
 
-            <label for="rating">Rating</label>
+            <label for="item">Item Name</label>
+            <input id="item" placeholder="Enter item name" required>
 
-             <div class="stars" id="stars">
-    <span data-rating="1">☆</span>
-    <span data-rating="2">☆</span>
-    <span data-rating="3">☆</span>
-    <span data-rating="4">☆</span>
-    <span data-rating="5">☆</span>
-</div>
+            <label for="category">Category</label>
+            <select id="category" required>
+                <option value="">Select category</option>
+                <option>Books</option>
+                <option>Electronics</option>
+                <option>Clothing</option>
+                <option>Furniture</option>
+                <option>Other</option>
+            </select>
 
-<input type="hidden" id="rating">         
-   
-            <label for="comment">Feedback</label>
+            <label for="quantity">Quantity</label>
+            <input id="quantity" type="number" min="1"
+                placeholder="Enter quantity" required>
 
-            <textarea
-                id="comment"
-                placeholder="Write your feedback..."
+            <label for="reason">Reason</label>
+            <textarea id="reason"
+                placeholder="Why do you need this item?"
                 required></textarea>
 
-            <button type="submit">Submit Feedback</button>
+            <button type="submit">Submit Request</button>
 
         </form>
 
@@ -155,46 +144,35 @@
     </div>
 
     <script>
- 
-    document.querySelectorAll("#stars span").forEach(star => {
-    star.addEventListener("click", () => {
-        const rating = star.dataset.rating;
-
-        document.getElementById("rating").value = rating;
-
-        document.querySelectorAll("#stars span").forEach(s => {
-            s.textContent = s.dataset.rating <= rating ? "★" : "☆";
-        });
-    });
-});
-
-
-
-
-
-
-       const form = document.getElementById("feedbackForm");
+        const form = document.getElementById("requestForm");
 
         form.addEventListener("submit", async (e) => {
             e.preventDefault();
 
-            const rating = document.getElementById("rating").value;
-            const comment = document.getElementById("comment").value.trim();
+            const item = document.getElementById("item").value.trim();
+            const category = document.getElementById("category").value;
+            const quantity = document.getElementById("quantity").value;
+            const reason = document.getElementById("reason").value.trim();
             const message = document.getElementById("message");
 
-            if (!rating || !comment) {
+            if (!item || !category || !quantity || !reason) {
                 message.textContent = "Please fill all fields.";
                 message.className = "error";
                 return;
             }
 
             try {
-                const response = await fetch("/api/feedback", {
+                const response = await fetch("/api/requests", {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json"
                     },
-                    body: JSON.stringify({ rating, comment })
+                    body: JSON.stringify({
+                        item,
+                        category,
+                        quantity,
+                        reason
+                    })
                 });
 
                 const result = await response.json();
@@ -203,12 +181,12 @@
                     throw new Error(result.message);
                 }
 
-                message.textContent = "Feedback submitted successfully.";
+                message.textContent = "Request submitted successfully.";
                 message.className = "success";
                 form.reset();
 
             } catch (error) {
-                message.textContent = "Failed to submit feedback.";
+                message.textContent = "Failed to submit request.";
                 message.className = "error";
             }
         });
