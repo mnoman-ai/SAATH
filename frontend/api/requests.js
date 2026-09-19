@@ -17,7 +17,7 @@ export default async function handler(req, res) {
 
     let data = { requests: [] };
 
-    if (files.blobs.length) {
+    if (files.blobs.length > 0) {
         const response = await fetch(files.blobs[0].url);
         data = await response.json();
     }
@@ -35,7 +35,7 @@ export default async function handler(req, res) {
         "requests.json",
         JSON.stringify(data, null, 2),
         {
-            access: "public",
+            access: "private",
             addRandomSuffix: false,
             contentType: "application/json"
         }
