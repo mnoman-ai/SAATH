@@ -1,24 +1,21 @@
-SAATH VERCEL OVERLAY
+SAATH - COMPLETE RESOURCES FIX
 
-Copy these files into the existing ~/SAATH project.
-Existing Feedback and Request files are intentionally not included, so your working code stays unchanged.
+Files included:
+- frontend/resources/index.html
+- frontend/resources/script.js
+- frontend/api/resources.js
+- frontend/data/resources.json
+- frontend/request/index.html
 
-After copying:
-1. cd ~/SAATH
-2. git status
-3. git add .
-4. git commit -m "Complete SAATH website"
-5. git push origin main
-
-Vercel should deploy automatically from GitHub.
-
-Required Vercel Blob environment variable:
-BLOB_READ_WRITE_TOKEN_READ_WRITE_TOKEN
-
-The Blob store must contain:
-feedback.json
-requests.json
-resources.json
-users.json
-
-If resources.json or users.json do not exist in Blob yet, the API creates them after the first successful POST.
+Fixed:
+- Public browsing without login.
+- 6 resources initially and View All for the complete list.
+- Search and category filtering.
+- Click any item for full details.
+- Fake owner profile/details for every demo resource.
+- Add Item requires login/register.
+- Borrow / Request requires login/register.
+- Request page itself requires login/register.
+- Feedback remains login-protected.
+- Resource API seeds/merges the 20 demo resources with Vercel Blob.
+- New resources receive owner details.

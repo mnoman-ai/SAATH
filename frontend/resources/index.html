@@ -6,32 +6,22 @@
 <title>SAATH - Resources</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0;font-family:Arial,sans-serif}
-body{background:#f5f6f8;color:#222}
-.header{background:#fff;border-bottom:1px solid #e5e5e5;padding:15px 25px;position:sticky;top:0;z-index:5}
-.top{max-width:1150px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:15px}
-.logo{font-size:28px;font-weight:bold;color:#2563eb}
-.links{display:flex;gap:8px;flex-wrap:wrap}
-.links a{padding:10px 12px;text-decoration:none;color:#222;font-weight:600;border-radius:8px}
-.links a:hover{background:#f0f1f3}
-.container{max-width:1150px;margin:30px auto;padding:0 20px}
-.tools{background:#fff;padding:20px;border-radius:12px;box-shadow:0 4px 15px #0001;margin-bottom:25px;display:flex;gap:12px;flex-wrap:wrap}
+body{background:#f5f6f8;color:#222}.header{background:#fff;border-bottom:1px solid #e5e5e5;padding:15px 25px;position:sticky;top:0;z-index:10}
+.top{max-width:1150px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:15px}.logo{font-size:28px;font-weight:bold;color:#2563eb}
+.links{display:flex;gap:8px;flex-wrap:wrap}.links a{padding:10px 12px;text-decoration:none;color:#222;font-weight:600;border-radius:8px}.links a:hover{background:#f0f1f3}
+.container{max-width:1150px;margin:30px auto;padding:0 20px}.tools{background:#fff;padding:20px;border-radius:12px;box-shadow:0 4px 15px #0001;margin-bottom:25px;display:flex;gap:12px;flex-wrap:wrap}
 .tools input,.tools select,.add-form input,.add-form select,.add-form textarea{padding:12px;border:1px solid #ccc;border-radius:8px;font-size:15px}
-.tools input{flex:1;min-width:220px}.tools select{min-width:170px}
-.btn{border:0;padding:12px 18px;border-radius:8px;cursor:pointer;font-weight:bold}
-.blue{background:#2563eb;color:#fff}.green{background:#198754;color:#fff}.red{background:#dc3545;color:#fff}
-.add-form{display:none;background:#fff;padding:20px;border-radius:12px;box-shadow:0 4px 15px #0001;margin-bottom:25px}
-.add-form h2{margin-bottom:15px;color:#2563eb}.add-form label{display:block;margin:12px 0 6px;font-weight:bold}
+.tools input{flex:1;min-width:220px}.tools select{min-width:170px}.btn{border:0;padding:12px 18px;border-radius:8px;cursor:pointer;font-weight:bold}.blue{background:#2563eb;color:#fff}.green{background:#198754;color:#fff}.red{background:#dc3545;color:#fff}
+.add-form{display:none;background:#fff;padding:20px;border-radius:12px;box-shadow:0 4px 15px #0001;margin-bottom:25px}.add-form h2{margin-bottom:15px;color:#2563eb}.add-form label{display:block;margin:12px 0 6px;font-weight:bold}
 .add-form input,.add-form select,.add-form textarea{width:100%}.add-form textarea{min-height:90px;resize:vertical}
-.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-.card{background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 4px 15px #0001}
-.card img{width:100%;height:190px;object-fit:cover;display:block;background:#eee}
-.content{padding:17px}.badge{display:inline-block;background:#eaf4ff;color:#2563eb;padding:5px 9px;border-radius:15px;font-size:12px;margin-bottom:8px}
-.content h3{color:#2563eb;margin-bottom:8px}.content p{color:#555;font-size:14px;margin:6px 0;line-height:1.4}
-.content button{width:100%;margin-top:10px}.empty{background:#fff;padding:30px;border-radius:10px;text-align:center;color:#777;grid-column:1/-1}
-.view{text-align:center;margin:28px 0}.view button{min-width:210px}.note{color:#666;font-size:14px;margin-bottom:15px}
-.count{margin:0 0 15px;color:#555;font-size:14px}
-@media(max-width:900px){.grid{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:600px){.grid{grid-template-columns:1fr}.container{padding:0 15px}.tools input,.tools select,.tools button{width:100%}.links a:nth-child(n+3){display:none}}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}.card{background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 4px 15px #0001;cursor:pointer;transition:.2s}.card:hover{transform:translateY(-3px)}
+.card img{width:100%;height:190px;object-fit:cover;display:block;background:#eee}.content{padding:17px}.badge{display:inline-block;background:#eaf4ff;color:#2563eb;padding:5px 9px;border-radius:15px;font-size:12px;margin-bottom:8px}
+.content h3{color:#2563eb;margin-bottom:8px}.content p{color:#555;font-size:14px;margin:6px 0;line-height:1.4}.content button{width:100%;margin-top:10px}.details-btn{background:#eef4ff;color:#2563eb}
+.empty{background:#fff;padding:30px;border-radius:10px;text-align:center;color:#777;grid-column:1/-1}.view{text-align:center;margin:28px 0}.view button{min-width:210px}.note{color:#666;font-size:14px;margin-bottom:15px}.count{margin:0 0 15px;color:#555;font-size:14px}
+.modal{display:none;position:fixed;inset:0;background:#0008;z-index:50;align-items:center;justify-content:center;padding:20px}.modal.show{display:flex}.modal-box{background:#fff;width:100%;max-width:720px;max-height:90vh;overflow:auto;border-radius:15px;box-shadow:0 10px 40px #0004}
+.modal-head{display:flex;justify-content:space-between;align-items:center;padding:18px 22px;border-bottom:1px solid #eee}.modal-head h2{color:#2563eb}.close{border:0;background:none;font-size:28px;cursor:pointer;color:#666}
+.modal-body{padding:22px}.detail-image{width:100%;height:260px;object-fit:cover;border-radius:10px;margin-bottom:18px}.detail-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:15px 0}.detail-box{background:#f7f8fa;padding:12px;border-radius:9px}.detail-box small{display:block;color:#777;margin-bottom:4px}.owner{border:1px solid #dce5f5;background:#f7faff;border-radius:12px;padding:16px;margin-top:18px}.owner h3{color:#2563eb;margin-bottom:10px}.modal-actions{display:flex;gap:10px;margin-top:18px}.modal-actions button{flex:1}
+@media(max-width:900px){.grid{grid-template-columns:repeat(2,1fr)}}@media(max-width:600px){.grid{grid-template-columns:1fr}.container{padding:0 15px}.tools input,.tools select,.tools button{width:100%}.links a:nth-child(n+3){display:none}.detail-grid{grid-template-columns:1fr}.modal-actions{flex-direction:column}}
 </style>
 </head>
 <body>
@@ -41,11 +31,8 @@ body{background:#f5f6f8;color:#222}
 
 <main class="container">
 <div class="tools">
-<input id="search" placeholder="Search resources by name, category, location, condition...">
-<select id="category">
-<option value="All">All Categories</option>
-<option>Academic</option><option>Books</option><option>Electronics</option><option>Sports</option><option>Household</option><option>Tools</option>
-</select>
+<input id="search" placeholder="Search by name, category, location, condition or owner...">
+<select id="category"><option value="All">All Categories</option><option>Academic</option><option>Books</option><option>Electronics</option><option>Sports</option><option>Household</option><option>Tools</option></select>
 <button class="btn green" onclick="showAdd()">+ Add Item</button>
 </div>
 
@@ -58,16 +45,22 @@ body{background:#f5f6f8;color:#222}
 <label>Description</label><textarea id="description" placeholder="Enter item description"></textarea>
 <label>Contact</label><input id="contact" placeholder="Contact details">
 <label>Sharing</label><select id="sharing"><option>Available</option><option>Borrow Only</option><option>Free to Take</option></select>
-<br><button class="btn green" onclick="addItem()">Add Resource</button>
-<button class="btn red" onclick="hideAdd()">Close</button>
+<br><button class="btn green" onclick="addItem()">Add Resource</button> <button class="btn red" onclick="hideAdd()">Close</button>
 </div>
 
 <h2 style="margin-bottom:7px">Available Resources</h2>
-<p class="note">6 resources are shown first. Search or use View All to explore the complete resource list.</p>
+<p class="note">The website can be explored without login. Login/Register is required only for actions such as Add Item, Request and Feedback.</p>
 <p class="count" id="resultCount">Loading resources...</p>
 <div class="grid" id="grid"></div>
 <div class="view"><button id="viewAllBtn" class="btn blue" onclick="toggleAll()">View All 20 Resources</button></div>
 </main>
+
+<div class="modal" id="detailModal" onclick="closeDetails(event)">
+<div class="modal-box" onclick="event.stopPropagation()">
+<div class="modal-head"><h2 id="detailTitle">Resource Details</h2><button class="close" onclick="closeDetails()">×</button></div>
+<div class="modal-body" id="detailBody"></div>
+</div></div>
+
 <script src="script.js"></script>
 </body>
 </html>
