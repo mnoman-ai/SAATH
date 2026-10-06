@@ -1,1 +1,202 @@
-{"resources":[{"id":1,"name":"Scientific Calculator","category":"Academic","condition":"Good","location":"College Campus","description":"Scientific calculator useful for engineering mathematics.","contact":"SAATH Member","sharing":"Available","image":"https://images.unsplash.com/photo-1587145820266-a5951ee6f620?w=700"},{"id":2,"name":"Engineering Mathematics Book","category":"Books","condition":"Good","location":"College Library","description":"Reference book for engineering mathematics.","contact":"SAATH Member","sharing":"Borrow Only","image":"https://images.unsplash.com/photo-1543002588-bfa74002ed7e?w=700"},{"id":3,"name":"Java Programming Book","category":"Books","condition":"Very Good","location":"Hostel","description":"Java programming reference book for students.","contact":"SAATH Member","sharing":"Borrow Only","image":"https://images.unsplash.com/photo-1532012197267-da84d127e765?w=700"},{"id":4,"name":"Laptop","category":"Electronics","condition":"Very Good","location":"College Campus","description":"Laptop available for academic projects and study.","contact":"SAATH Member","sharing":"Borrow Only","image":"https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=700"},{"id":5,"name":"Cricket Bat","category":"Sports","condition":"Good","location":"College Ground","description":"Cricket bat available for students.","contact":"SAATH Member","sharing":"Borrow Only","image":"https://images.unsplash.com/photo-1531415074968-036ba1b575da?w=700"},{"id":6,"name":"School Bag","category":"Household","condition":"Good","location":"Hostel","description":"Bag useful for carrying books and study materials.","contact":"SAATH Member","sharing":"Available","image":"https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=700"}]}
+{
+  "resources": [
+    {
+      "id": 1,
+      "name": "Scientific Calculator",
+      "category": "Academic",
+      "condition": "Good",
+      "location": "College Campus",
+      "description": "Scientific calculator suitable for engineering mathematics and numerical calculations.",
+      "contact": "SAATH Member",
+      "sharing": "Available",
+      "image": "https://images.unsplash.com/photo-1587145820266-a5951ee6f620?w=700"
+    },
+    {
+      "id": 2,
+      "name": "Engineering Mathematics Book",
+      "category": "Books",
+      "condition": "Good",
+      "location": "College Library",
+      "description": "Reference book for engineering mathematics and regular academic study.",
+      "contact": "SAATH Member",
+      "sharing": "Borrow Only",
+      "image": "https://images.unsplash.com/photo-1543002588-bfa74002ed7e?w=700"
+    },
+    {
+      "id": 3,
+      "name": "Java Programming Book",
+      "category": "Books",
+      "condition": "Very Good",
+      "location": "Hostel",
+      "description": "Java programming reference book useful for learning OOP and programming concepts.",
+      "contact": "SAATH Member",
+      "sharing": "Borrow Only",
+      "image": "https://images.unsplash.com/photo-1532012197267-da84d127e765?w=700"
+    },
+    {
+      "id": 4,
+      "name": "Laptop",
+      "category": "Electronics",
+      "condition": "Very Good",
+      "location": "College Campus",
+      "description": "Laptop available for academic projects, programming practice and study.",
+      "contact": "SAATH Member",
+      "sharing": "Borrow Only",
+      "image": "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=700"
+    },
+    {
+      "id": 5,
+      "name": "Cricket Bat",
+      "category": "Sports",
+      "condition": "Good",
+      "location": "College Ground",
+      "description": "Cricket bat available for students for practice and recreational games.",
+      "contact": "SAATH Member",
+      "sharing": "Borrow Only",
+      "image": "https://images.unsplash.com/photo-1531415074968-036ba1b575da?w=700"
+    },
+    {
+      "id": 6,
+      "name": "School Bag",
+      "category": "Household",
+      "condition": "Good",
+      "location": "Hostel",
+      "description": "Durable school bag suitable for carrying books and study materials.",
+      "contact": "SAATH Member",
+      "sharing": "Available",
+      "image": "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=700"
+    },
+    {
+      "id": 7,
+      "name": "Scientific Calculator FX-991",
+      "category": "Academic",
+      "condition": "Very Good",
+      "location": "College Campus",
+      "description": "Advanced scientific calculator useful for mathematics, physics and engineering subjects.",
+      "contact": "SAATH Member",
+      "sharing": "Borrow Only",
+      "image": "https://images.unsplash.com/photo-1564466809058-bf4114d55352?w=700"
+    },
+    {
+      "id": 8,
+      "name": "Physics Reference Book",
+      "category": "Books",
+      "condition": "Good",
+      "location": "Hostel",
+      "description": "Physics reference material for engineering students and exam preparation.",
+      "contact": "SAATH Member",
+      "sharing": "Borrow Only",
+      "image": "https://images.unsplash.com/photo-1521587760476-6c12a4b040da?w=700"
+    },
+    {
+      "id": 9,
+      "name": "Data Structures Book",
+      "category": "Books",
+      "condition": "Very Good",
+      "location": "College Campus",
+      "description": "Reference book covering arrays, linked lists, stacks, queues, trees and algorithms.",
+      "contact": "SAATH Member",
+      "sharing": "Borrow Only",
+      "image": "https://images.unsplash.com/photo-1512820790803-83ca734da794?w=700"
+    },
+    {
+      "id": 10,
+      "name": "USB Keyboard",
+      "category": "Electronics",
+      "condition": "Good",
+      "location": "Hostel",
+      "description": "USB keyboard suitable for programming practice and general computer use.",
+      "contact": "SAATH Member",
+      "sharing": "Available",
+      "image": "https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=700"
+    },
+    {
+      "id": 11,
+      "name": "Wireless Mouse",
+      "category": "Electronics",
+      "condition": "Very Good",
+      "location": "College Campus",
+      "description": "Wireless mouse available for laptop and desktop use.",
+      "contact": "SAATH Member",
+      "sharing": "Borrow Only",
+      "image": "https://images.unsplash.com/photo-1527814050087-3793815479db?w=700"
+    },
+    {
+      "id": 12,
+      "name": "Football",
+      "category": "Sports",
+      "condition": "Good",
+      "location": "College Ground",
+      "description": "Football available for students for practice and recreational matches.",
+      "contact": "SAATH Member",
+      "sharing": "Available",
+      "image": "https://images.unsplash.com/photo-1579952363873-27f3bade9f55?w=700"
+    },
+    {
+      "id": 13,
+      "name": "Badminton Racket",
+      "category": "Sports",
+      "condition": "Good",
+      "location": "College Ground",
+      "description": "Badminton racket available for practice and friendly games.",
+      "contact": "SAATH Member",
+      "sharing": "Borrow Only",
+      "image": "https://images.unsplash.com/photo-1626224583764-f87db24ac4ea?w=700"
+    },
+    {
+      "id": 14,
+      "name": "Backpack",
+      "category": "Household",
+      "condition": "Very Good",
+      "location": "Hostel",
+      "description": "Everyday backpack suitable for books, laptop and college essentials.",
+      "contact": "SAATH Member",
+      "sharing": "Available",
+      "image": "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=700"
+    },
+    {
+      "id": 15,
+      "name": "Extension Board",
+      "category": "Electronics",
+      "condition": "Good",
+      "location": "Hostel",
+      "description": "Multi-socket extension board useful for charging and powering study equipment.",
+      "contact": "SAATH Member",
+      "sharing": "Borrow Only",
+      "image": "https://images.unsplash.com/photo-1558008258-3256797b43f3?w=700"
+    },
+    {
+      "id": 16,
+      "name": "Drawing Sheet Set",
+      "category": "Academic",
+      "condition": "New",
+      "location": "College Campus",
+      "description": "Drawing sheets useful for engineering graphics, assignments and practical work.",
+      "contact": "SAATH Member",
+      "sharing": "Available",
+      "image": "https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=700"
+    },
+    {
+      "id": 17,
+      "name": "Screwdriver Set",
+      "category": "Tools",
+      "condition": "Good",
+      "location": "Hostel",
+      "description": "Basic screwdriver set for small repairs and assembling household or electronic items.",
+      "contact": "SAATH Member",
+      "sharing": "Borrow Only",
+      "image": "https://images.unsplash.com/photo-1581147036324-c17a9f7b5d4b?w=700"
+    },
+    {
+      "id": 18,
+      "name": "Study Lamp",
+      "category": "Household",
+      "condition": "Very Good",
+      "location": "Hostel",
+      "description": "LED study lamp suitable for reading and late-evening study sessions.",
+      "contact": "SAATH Member",
+      "sharing": "Available",
+      "image": "https://images.unsplash.com/photo-1507473885765-e6ed057f782c?w=700"
+    }
+  ]
+}
