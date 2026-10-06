@@ -28,7 +28,7 @@
       "category": "Books",
       "condition": "Very Good",
       "location": "Hostel",
-      "description": "Java programming reference book useful for learning OOP and programming concepts.",
+      "description": "Java programming reference book useful for OOP and programming concepts.",
       "contact": "SAATH Member",
       "sharing": "Borrow Only",
       "image": "https://images.unsplash.com/photo-1532012197267-da84d127e765?w=700"
@@ -197,6 +197,28 @@
       "contact": "SAATH Member",
       "sharing": "Available",
       "image": "https://images.unsplash.com/photo-1507473885765-e6ed057f782c?w=700"
+    },
+    {
+      "id": 19,
+      "name": "USB-C Charger",
+      "category": "Electronics",
+      "condition": "Very Good",
+      "location": "College Campus",
+      "description": "USB-C charger suitable for compatible phones, tablets and other devices.",
+      "contact": "SAATH Member",
+      "sharing": "Borrow Only",
+      "image": "https://images.unsplash.com/photo-1583863788434-e58a36330cf0?w=700"
+    },
+    {
+      "id": 20,
+      "name": "Notebook Set",
+      "category": "Academic",
+      "condition": "New",
+      "location": "College Campus",
+      "description": "New notebooks suitable for lectures, assignments and daily study notes.",
+      "contact": "SAATH Member",
+      "sharing": "Available",
+      "image": "https://images.unsplash.com/photo-1531346878377-a5be20888e57?w=700"
     }
   ]
 }

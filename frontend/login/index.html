@@ -1,7 +1,37 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>SAATH - Login</title><style>
-*{box-sizing:border-box;font-family:Arial,sans-serif}body{margin:0;min-height:100vh;background:#eaf4ff;display:flex;justify-content:center;align-items:center;padding:20px}.container{width:100%;max-width:500px;background:#fff;padding:35px;border-radius:15px;box-shadow:0 5px 20px #0002}.logo{text-align:center;color:#2563eb;font-size:32px;font-weight:bold}h2{text-align:center;color:#222}p{text-align:center;color:#666}input,button{width:100%;padding:12px;border-radius:8px;font-size:15px}input{border:1px solid #ccc;margin:8px 0}button{margin-top:15px;border:0;background:#2563eb;color:#fff;cursor:pointer}.switch{text-align:center;margin-top:18px}.switch span{color:#2563eb;font-weight:bold;cursor:pointer}.hidden{display:none}.message{text-align:center;margin-top:12px;font-weight:bold}</style></head><body><div class="container"><div class="logo">SAATH</div><div id="registerBox"><h2>Registration</h2><p>Create your SAATH account</p><input id="regName" placeholder="Enter Name"><input id="regEmail" type="email" placeholder="Enter Email"><input id="regPassword" type="password" placeholder="Enter Password"><button onclick="register()">Register</button><p class="switch">Already have an account? <span onclick="showLogin()">Login</span></p></div><div id="loginBox" class="hidden"><h2>Login</h2><p>Login to SAATH</p><input id="loginEmail" type="email" placeholder="Enter Email"><input id="loginPassword" type="password" placeholder="Enter Password"><button onclick="login()">Login</button><p class="switch">Don't have an account? <span onclick="showRegister()">Register</span></p></div><div id="welcomeBox" class="hidden"><h2>Welcome!</h2><p id="welcomeMessage"></p><button onclick="location.href='/'">Go to Home</button></div><div id="message" class="message"></div></div><script>
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>SAATH - Login</title>
+<style>*{box-sizing:border-box;font-family:Arial,sans-serif}body{margin:0;min-height:100vh;background:#eaf4ff;display:flex;justify-content:center;align-items:center;padding:20px}.container{width:100%;max-width:500px;background:#fff;padding:35px;border-radius:15px;box-shadow:0 5px 20px #0002}.logo{text-align:center;color:#2563eb;font-size:32px;font-weight:bold}h2{text-align:center;color:#222}p{text-align:center;color:#666}input,button{width:100%;padding:12px;border-radius:8px;font-size:15px}input{border:1px solid #ccc;margin:8px 0}button{margin-top:15px;border:0;background:#2563eb;color:#fff;cursor:pointer}.switch{text-align:center;margin-top:18px}.switch span{color:#2563eb;font-weight:bold;cursor:pointer}.hidden{display:none}.message{text-align:center;margin-top:12px;font-weight:bold}.back{text-align:center;margin-top:18px}.back a{color:#2563eb;text-decoration:none;font-weight:bold}</style></head>
+<body><div class="container"><div class="logo">SAATH</div>
+<div id="registerBox"><h2>Registration</h2><p>Create your SAATH account</p><input id="regName" placeholder="Enter Name"><input id="regEmail" type="email" placeholder="Enter Email"><input id="regPassword" type="password" placeholder="Enter Password"><button onclick="register()">Register</button><p class="switch">Already have an account? <span onclick="showLogin()">Login</span></p></div>
+<div id="loginBox" class="hidden"><h2>Login</h2><p>Login to SAATH</p><input id="loginEmail" type="email" placeholder="Enter Email"><input id="loginPassword" type="password" placeholder="Enter Password"><button onclick="login()">Login</button><p class="switch">Don't have an account? <span onclick="showRegister()">Register</span></p></div>
+<div id="welcomeBox" class="hidden"><h2>Welcome!</h2><p id="welcomeMessage"></p><button onclick="continueToSite()">Continue</button></div>
+<div id="message" class="message"></div><div class="back"><a href="/">Home</a></div></div>
+<script>
+const params=new URLSearchParams(location.search);
+const next=params.get("next")||"/";
 function msg(t){document.getElementById("message").textContent=t}
-async function register(){const name=regName.value,email=regEmail.value,password=regPassword.value;if(!name||!email||!password){msg("Please fill all fields");return}const r=await fetch("/api/register",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({name,email,password})});const d=await r.json();msg(d.message);if(d.success)showLogin()}
-async function login(){const email=loginEmail.value,password=loginPassword.value;if(!email||!password){msg("Please fill all fields");return}const r=await fetch("/api/login",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({email,password})});const d=await r.json();if(d.success){loginBox.classList.add("hidden");welcomeBox.classList.remove("hidden");welcomeMessage.innerHTML="Hello "+d.name+"!<br>You are successfully logged in.";msg("")}else msg(d.message)}
-function showLogin(){registerBox.classList.add("hidden");loginBox.classList.remove("hidden");msg("")}function showRegister(){loginBox.classList.add("hidden");registerBox.classList.remove("hidden");msg("")}
+async function register(){
+ const name=regName.value.trim(),email=regEmail.value.trim(),password=regPassword.value;
+ if(!name||!email||!password){msg("Please fill all fields");return}
+ const r=await fetch("/api/register",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({name,email,password})});
+ const d=await r.json();msg(d.message);if(d.success)showLogin()
+}
+async function login(){
+ const email=loginEmail.value.trim(),password=loginPassword.value;
+ if(!email||!password){msg("Please fill all fields");return}
+ const r=await fetch("/api/login",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({email,password})});
+ const d=await r.json();
+ if(d.success){
+   localStorage.setItem("saathLoggedIn","true");
+   localStorage.setItem("saathUserName",d.name);
+   document.getElementById("loginBox").classList.add("hidden");
+   document.getElementById("registerBox").classList.add("hidden");
+   document.getElementById("welcomeBox").classList.remove("hidden");
+   document.getElementById("welcomeMessage").innerHTML="Hello "+d.name+"!<br>You are successfully logged in.";
+   msg("");
+ }else msg(d.message)
+}
+function continueToSite(){window.location.href=next}
+function showLogin(){registerBox.classList.add("hidden");loginBox.classList.remove("hidden");msg("")}
+function showRegister(){loginBox.classList.add("hidden");registerBox.classList.remove("hidden");msg("")}
 </script></body></html>
