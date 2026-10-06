@@ -7,48 +7,23 @@ const options = {
     token: process.env.BLOB_READ_WRITE_TOKEN_READ_WRITE_TOKEN
 };
 
-const seedFile = path.join(process.cwd(), "data", "resources.json");
+const seedPath = path.join(process.cwd(), "data", "resources.json");
 
-function readSeedData() {
-    try {
-        return JSON.parse(fs.readFileSync(seedFile, "utf8"));
-    } catch {
-        return { resources: [] };
-    }
+function getSeed() {
+    return JSON.parse(fs.readFileSync(seedPath, "utf8"));
 }
 
-function mergeResources(seed, live) {
-    const map = new Map();
-
-    for (const item of seed.resources || []) {
-        map.set(String(item.id), item);
-    }
-
-    for (const item of live.resources || []) {
-        const key = String(item.id || item.name);
-        map.set(key, item);
-    }
-
-    return { resources: Array.from(map.values()) };
-}
-
-async function getData() {
-    const seed = readSeedData();
-    let live = { resources: [] };
-
+async function readBlob() {
     try {
         const blob = await get("resources.json", options);
-        if (blob) {
-            live = JSON.parse(await new Response(blob.stream).text());
-        }
+        if (!blob) return null;
+        return JSON.parse(await new Response(blob.stream).text());
     } catch {
-        live = { resources: [] };
+        return null;
     }
-
-    return mergeResources(seed, live);
 }
 
-async function saveData(data) {
+async function writeBlob(data) {
     await put(
         "resources.json",
         JSON.stringify(data, null, 2),
@@ -61,11 +36,46 @@ async function saveData(data) {
     );
 }
 
+function cleanData(seed, live) {
+    const seedIds = new Set(seed.resources.map(item => String(item.id)));
+
+    // If the Blob contains the old single-item/demo data, reset it to
+    // the current 20-item demo catalog. Once the current catalog exists,
+    // newly added user resources are kept.
+    if (!live || !Array.isArray(live.resources)) {
+        return seed;
+    }
+
+    const hasCurrentCatalog = seed.resources.every(item =>
+        live.resources.some(saved => String(saved.id) === String(item.id))
+    );
+
+    if (!hasCurrentCatalog) {
+        return seed;
+    }
+
+    const merged = new Map();
+    seed.resources.forEach(item => merged.set(String(item.id), item));
+
+    live.resources.forEach(item => {
+        const key = String(item.id || item.name);
+        if (!seedIds.has(key)) merged.set(key, item);
+    });
+
+    return { resources: Array.from(merged.values()) };
+}
+
 export default async function handler(req, res) {
     try {
-        const data = await getData();
+        const seed = getSeed();
+        const live = await readBlob();
+        const data = cleanData(seed, live);
 
         if (req.method === "GET") {
+            // If old Blob data was found, save the clean 20-item catalog now.
+            if (!live || JSON.stringify(live) !== JSON.stringify(data)) {
+                await writeBlob(data);
+            }
             return res.status(200).json(data);
         }
 
@@ -73,8 +83,7 @@ export default async function handler(req, res) {
             return res.status(405).json({ message: "Method not allowed" });
         }
 
-        const body = req.body || {};
-        const { name, category, condition, location, description, contact, sharing } = body;
+        const { name, category, condition, location, description, contact, sharing } = req.body || {};
 
         if (!name || !location || !description || !contact) {
             return res.status(400).json({
@@ -83,7 +92,7 @@ export default async function handler(req, res) {
         }
 
         const item = {
-            id: Date.now(),
+            id: "user-" + Date.now(),
             name: name.trim(),
             category: category || "Other",
             condition: condition || "Good",
@@ -102,7 +111,7 @@ export default async function handler(req, res) {
         };
 
         data.resources.unshift(item);
-        await saveData(data);
+        await writeBlob(data);
 
         return res.status(200).json({
             message: "Resource added successfully.",

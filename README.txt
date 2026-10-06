@@ -1,21 +1,29 @@
-SAATH - COMPLETE RESOURCES FIX
+SAATH SMART FINAL RESOURCES FIX
 
-Files included:
-- frontend/resources/index.html
-- frontend/resources/script.js
-- frontend/api/resources.js
-- frontend/data/resources.json
-- frontend/request/index.html
+This update replaces the old single/legacy resource data with exactly 20
+presentation-ready demo resources.
 
-Fixed:
-- Public browsing without login.
-- 6 resources initially and View All for the complete list.
-- Search and category filtering.
-- Click any item for full details.
-- Fake owner profile/details for every demo resource.
-- Add Item requires login/register.
-- Borrow / Request requires login/register.
-- Request page itself requires login/register.
-- Feedback remains login-protected.
-- Resource API seeds/merges the 20 demo resources with Vercel Blob.
-- New resources receive owner details.
+Resource behavior:
+- Public browsing: no login needed.
+- 6 cards initially.
+- View All shows all demo resources.
+- Search and category filter work.
+- Clicking a card opens full details.
+- Every demo item has demo owner details.
+- Borrow / Request requires Login/Register.
+- Add Item requires Login/Register.
+- Request page also requires Login/Register.
+- Feedback remains Login/Register protected.
+
+Important Vercel behavior:
+- The project Root Directory is frontend.
+- Seed data is therefore stored in frontend/data/resources.json.
+- If the old Blob contains the previous single resource, the API detects
+  that the current 20-item catalog is incomplete and resets Blob to the
+  current 20 demo items.
+- After the current catalog exists, newly added user resources are kept.
+- The visible Resources page also has a local 20-item fallback during
+  deployment/API failure.
+
+The explanatory login sentence has intentionally NOT been placed on the
+website UI.
