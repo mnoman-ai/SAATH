@@ -1,123 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>SAATH</title>
-
-    <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: Arial, sans-serif;
-        }
-
-        body {
-            background: #f5f6f8;
-            min-height: 100vh;
-            color: #222;
-        }
-
-        header {
-            height: 70px;
-            background: #ffffff;
-            border-bottom: 1px solid #e5e5e5;
-
-            display: flex;
-            align-items: center;
-
-            padding: 0 35px;
-        }
-
-        .logo {
-            font-size: 28px;
-            font-weight: 700;
-            letter-spacing: 1px;
-        }
-
-        .page {
-            min-height: calc(100vh - 70px);
-
-            display: flex;
-            align-items: flex-start;
-
-            padding: 45px 35px;
-        }
-
-        .menu {
-            width: 260px;
-
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-
-        .menu-button {
-            width: 100%;
-            padding: 18px 22px;
-
-            background: #ffffff;
-            border: 1px solid #e1e1e1;
-            border-radius: 10px;
-
-            color: #222;
-            text-decoration: none;
-            font-size: 17px;
-            font-weight: 600;
-
-            transition: 0.2s;
-        }
-
-        .menu-button:hover {
-            background: #f0f1f3;
-            transform: translateX(4px);
-        }
-
-        .empty-area {
-            flex: 1;
-        }
-
-        @media (max-width: 600px) {
-            header {
-                padding: 0 20px;
-            }
-
-            .page {
-                padding: 30px 20px;
-            }
-
-            .menu {
-                width: 220px;
-            }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SAATH - Community Resource Sharing</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;font-family:Arial,sans-serif}
+body{background:#f5f6f8;color:#222;min-height:100vh}
+header{height:70px;background:#fff;border-bottom:1px solid #e5e5e5;display:flex;align-items:center;padding:0 35px;position:sticky;top:0;z-index:10}
+.logo{font-size:28px;font-weight:700;letter-spacing:1px;color:#2563eb}
+nav{margin-left:auto;display:flex;gap:10px;flex-wrap:wrap}
+nav a{padding:11px 15px;border-radius:8px;text-decoration:none;color:#222;font-weight:600}
+nav a:hover{background:#f0f1f3}
+.hero{max-width:1150px;margin:0 auto;padding:70px 25px;display:grid;grid-template-columns:1.4fr .8fr;gap:45px;align-items:center}
+.hero h1{font-size:48px;line-height:1.1;margin-bottom:18px}.hero h1 span{color:#2563eb}.hero p{color:#666;font-size:17px;line-height:1.6;max-width:650px}
+.buttons{display:flex;gap:12px;margin-top:28px;flex-wrap:wrap}.button{display:inline-block;padding:13px 20px;border-radius:8px;text-decoration:none;font-weight:600}.primary{background:#2563eb;color:#fff}.secondary{background:#fff;color:#222;border:1px solid #ddd}
+.hero-card{background:#fff;border-radius:15px;padding:30px;box-shadow:0 5px 20px #0001;text-align:center}.hero-card .icon{font-size:55px;margin-bottom:12px}.hero-card h2{margin-bottom:8px}.hero-card p{font-size:14px}
+.section{max-width:1150px;margin:auto;padding:25px}.section h2{margin-bottom:18px}.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}.card{background:#fff;border:1px solid #e1e1e1;border-radius:10px;padding:22px;text-align:center}.card .emoji{font-size:38px;margin-bottom:10px}.card p{color:#666;margin-top:7px;font-size:14px}
+footer{margin-top:55px;background:#fff;border-top:1px solid #e5e5e5;padding:25px;text-align:center;color:#666}
+@media(max-width:800px){.hero{grid-template-columns:1fr;padding-top:45px}.hero h1{font-size:38px}.cards{grid-template-columns:repeat(2,1fr)}nav{display:none}}
+@media(max-width:500px){header{padding:0 20px}.cards{grid-template-columns:1fr}.hero{padding:35px 20px}.section{padding:20px}}
+</style>
 </head>
-
 <body>
-
-    <header>
-        <div class="logo">SAATH</div>
-    </header>
-
-    <main class="page">
-
-        <div class="menu">
-
-            <a href="/request/" class="menu-button">
-                Request
-            </a>
-
-            <a href="/feedback/" class="menu-button">
-                Feedback
-            </a>
-
-        </div>
-
-        <div class="empty-area"></div>
-
-    </main>
-
-</body>
-</html>
+<header><div class="logo">SAATH</div><nav>
+<a href="/">Home</a><a href="/resources/">Resources</a><a href="/request/">Request</a><a href="/feedback/">Feedback</a><a href="/login/">Login</a>
+</nav></header>
+<section class="hero">
+<div><p style="color:#2563eb;font-weight:700;letter-spacing:1px;margin-bottom:10px">SHARE • HELP • CONNECT</p>
+<h1>Share What You Have, <span>Help Someone Today.</span></h1>
+<p>SAATH is a community resource-sharing platform that connects people who have useful resources with people who need them.</p>
+<div class="buttons"><a class="button primary" href="/resources/">Explore Resources</a><a class="button secondary" href="/request/">Request an Item</a><a class="button secondary" href="/feedback/">Give Feedback</a></div></div>
+<div class="hero-card"><div class="icon">🤝</div><h2>Together We Can</h2><p>Share useful resources, reduce waste and support your community.</p></div>
+</section>
+<section class="section"><h2>What You Can Do</h2><div class="cards">
+<div class="card"><div class="emoji">📚</div><h3>Find Resources</h3><p>Search useful items shared by the community.</p></div>
+<div class="card"><div class="emoji">➕</div><h3>Share Items</h3><p>Add resources that others may need.</p></div>
+<div class="card"><div class="emoji">📦</div><h3>Send Requests</h3><p>Request items with a simple form.</p></div>
+<div class="card"><div class="emoji">⭐</div><h3>Give Feedback</h3><p>Rate your experience and help us improve.</p></div>
+</div></section>
+<footer>SAATH © 2026 | Sharing Assets and Things Together for Humanity</footer>
+</body></html>
